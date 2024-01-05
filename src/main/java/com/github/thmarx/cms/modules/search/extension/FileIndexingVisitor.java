@@ -83,7 +83,10 @@ public class FileIndexingVisitor extends SimpleFileVisitor<Path> {
 			
 			var content = getContent(file);
 
-			if (content.isPresent() && Constants.ContentTypes.HTML.equals(content.get().contentType())) {
+			if (content.isPresent() 
+					&& Constants.ContentTypes.HTML.equals(content.get().contentType())
+					&& Constants.NodeType.PAGE.equals(content.get().node().nodeType())
+					) {
 				final Document parsedContent = Jsoup.parse(content.get().content());
 				
 				if (noindex(parsedContent)) {
