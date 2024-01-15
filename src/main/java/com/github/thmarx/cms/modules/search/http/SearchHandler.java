@@ -22,6 +22,7 @@ package com.github.thmarx.cms.modules.search.http;
  * #L%
  */
 
+import com.github.thmarx.cms.api.extensions.HttpHandler;
 import com.github.thmarx.cms.modules.search.SearchEngine;
 import com.github.thmarx.cms.modules.search.SearchRequest;
 import com.github.thmarx.cms.modules.search.index.SearchResult;
@@ -31,7 +32,6 @@ import java.nio.charset.StandardCharsets;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.jetty.io.Content;
-import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Response;
 import org.eclipse.jetty.util.Callback;
@@ -43,7 +43,7 @@ import org.eclipse.jetty.util.Fields;
  */
 @Slf4j
 @RequiredArgsConstructor
-public class SearchHandler extends Handler.Abstract {
+public class SearchHandler implements HttpHandler {
 	protected static final String PARAMETER_QUERY = "query";
 	protected static final String PARAMETER_PAGE = "page";
 	protected static final String PARAMETER_SIZE = "size";
@@ -55,7 +55,6 @@ public class SearchHandler extends Handler.Abstract {
 
 	@Override
 	public boolean handle(Request request, Response response, Callback callback) throws Exception {
-
 		Fields extractQueryParameters = Request.extractQueryParameters(request, StandardCharsets.UTF_8);
 		final String query = extractQueryParameters.get(PARAMETER_QUERY) != null ? extractQueryParameters.get(PARAMETER_QUERY).getValue() : "";
 		final int page = extractQueryParameters.get(PARAMETER_PAGE) != null ? extractQueryParameters.get(PARAMETER_PAGE).getValueAsInt() : 1;
