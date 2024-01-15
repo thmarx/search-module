@@ -27,6 +27,7 @@ import com.github.thmarx.cms.api.feature.features.DBFeature;
 import com.github.thmarx.cms.api.feature.features.EventBusFeature;
 import com.github.thmarx.cms.api.feature.features.SitePropertiesFeature;
 import com.github.thmarx.cms.api.module.CMSModuleContext;
+import com.github.thmarx.cms.api.module.CMSRequestContext;
 import com.github.thmarx.cms.modules.search.SearchEngine;
 import com.github.thmarx.modules.api.ModuleLifeCycleExtension;
 import com.github.thmarx.modules.api.annotation.Extension;
@@ -40,7 +41,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Extension(ModuleLifeCycleExtension.class)
-public class SearchLifecycleExtension extends ModuleLifeCycleExtension<CMSModuleContext> {
+public class SearchLifecycleExtension extends ModuleLifeCycleExtension<CMSModuleContext, CMSRequestContext> {
 
 	static SearchEngine searchEngine;
 
