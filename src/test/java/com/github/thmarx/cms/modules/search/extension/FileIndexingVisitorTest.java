@@ -22,10 +22,7 @@ package com.github.thmarx.cms.modules.search.extension;
  * #L%
  */
 import com.github.thmarx.cms.api.utils.PathUtil;
-import com.github.thmarx.cms.modules.search.IndexDocument;
-import com.github.thmarx.cms.modules.search.SearchEngine;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
