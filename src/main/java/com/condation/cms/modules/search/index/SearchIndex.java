@@ -1,4 +1,4 @@
-package com.github.thmarx.cms.modules.search.index;
+package com.condation.cms.modules.search.index;
 
 /*-
  * #%L
@@ -21,10 +21,10 @@ package com.github.thmarx.cms.modules.search.index;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-import com.github.thmarx.cms.modules.search.FileUtils;
-import com.github.thmarx.cms.modules.search.IndexDocument;
-import com.github.thmarx.cms.modules.search.SearchField;
-import com.github.thmarx.cms.modules.search.SearchRequest;
+import com.condation.cms.modules.search.FileUtils;
+import com.condation.cms.modules.search.IndexDocument;
+import com.condation.cms.modules.search.SearchField;
+import com.condation.cms.modules.search.SearchRequest;
 import com.google.common.base.Strings;
 import java.io.IOException;
 import java.nio.file.Files;

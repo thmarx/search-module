@@ -1,4 +1,4 @@
-package com.github.thmarx.cms.modules.search.extension;
+package com.condation.cms.modules.search.extension;
 
 /*-
  * #%L
@@ -28,7 +28,7 @@ import com.github.thmarx.cms.api.feature.features.EventBusFeature;
 import com.github.thmarx.cms.api.feature.features.SitePropertiesFeature;
 import com.github.thmarx.cms.api.module.CMSModuleContext;
 import com.github.thmarx.cms.api.module.CMSRequestContext;
-import com.github.thmarx.cms.modules.search.SearchEngine;
+import com.condation.cms.modules.search.SearchEngine;
 import com.github.thmarx.modules.api.ModuleLifeCycleExtension;
 import com.github.thmarx.modules.api.annotation.Extension;
 import java.io.IOException;

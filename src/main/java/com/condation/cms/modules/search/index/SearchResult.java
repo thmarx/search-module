@@ -1,4 +1,4 @@
-package com.github.thmarx.cms.modules.search.index;
+package com.condation.cms.modules.search.index;
 
 /*-
  * #%L

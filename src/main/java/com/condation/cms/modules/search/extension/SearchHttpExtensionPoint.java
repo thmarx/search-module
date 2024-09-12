@@ -1,4 +1,4 @@
-package com.github.thmarx.cms.modules.search;
+package com.condation.cms.modules.search.extension;
 
 /*-
  * #%L
@@ -22,16 +22,27 @@ package com.github.thmarx.cms.modules.search;
  * #L%
  */
 
-import java.util.Collections;
-import java.util.List;
+import com.github.thmarx.cms.api.extensions.HttpHandlerExtensionPoint;
+import com.github.thmarx.cms.api.extensions.Mapping;
+import com.condation.cms.modules.search.http.SearchHandler;
+import com.github.thmarx.modules.api.annotation.Extension;
+import org.eclipse.jetty.http.pathmap.PathSpec;
 
 /**
  *
- * @author thmar
+ * @author t.marx
  */
-public record IndexDocument(String uri, String title, String content, List<String> tags) {
+@Extension(HttpHandlerExtensionPoint.class)
+public class SearchHttpExtensionPoint extends HttpHandlerExtensionPoint {
 
-	public IndexDocument(String uri, String title, String content) {
-		this(uri, title, content, Collections.emptyList());
+	@Override
+	public Mapping getMapping() {
+		Mapping mapping = new Mapping();
+		
+		mapping.add(PathSpec.from("/search"), new SearchHandler(SearchLifecycleExtension.searchEngine));
+		
+		return mapping;
 	}
+	
+	
 }

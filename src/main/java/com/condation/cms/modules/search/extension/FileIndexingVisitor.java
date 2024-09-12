@@ -1,4 +1,4 @@
-package com.github.thmarx.cms.modules.search.extension;
+package com.condation.cms.modules.search.extension;
 
 /*-
  * #%L
@@ -30,8 +30,8 @@ import com.github.thmarx.cms.api.module.CMSModuleContext;
 import com.github.thmarx.cms.api.utils.HTTPUtil;
 import com.github.thmarx.cms.api.utils.PathUtil;
 import com.github.thmarx.cms.api.utils.SectionUtil;
-import com.github.thmarx.cms.modules.search.IndexDocument;
-import com.github.thmarx.cms.modules.search.SearchEngine;
+import com.condation.cms.modules.search.IndexDocument;
+import com.condation.cms.modules.search.SearchEngine;
 import com.google.common.base.Strings;
 import java.io.IOException;
 import java.nio.file.FileVisitResult;

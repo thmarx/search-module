@@ -1,4 +1,4 @@
-package com.github.thmarx.cms.modules.search;
+package com.condation.cms.modules.search;
 
 /*-
  * #%L
@@ -24,8 +24,18 @@ package com.github.thmarx.cms.modules.search;
 
 /**
  *
- * @author t.marx
+ * @author thmar
  */
-public record SearchRequest (String query, int page, int size) {
-	
+public enum SearchField {
+	TAGS("tags"),;
+
+	private final String fieldName;
+
+	private SearchField(final String name) {
+		this.fieldName = name;
+	}
+
+	public String getFieldName() {
+		return this.fieldName;
+	}
 }
