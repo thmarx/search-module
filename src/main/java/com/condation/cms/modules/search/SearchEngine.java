@@ -1,4 +1,4 @@
-package com.github.thmarx.cms.modules.search;
+package com.condation.cms.modules.search;
 
 /*-
  * #%L
@@ -22,8 +22,8 @@ package com.github.thmarx.cms.modules.search;
  * #L%
  */
 
-import com.github.thmarx.cms.modules.search.index.SearchIndex;
-import com.github.thmarx.cms.modules.search.index.SearchResult;
+import com.condation.cms.modules.search.index.SearchIndex;
+import com.condation.cms.modules.search.index.SearchResult;
 import com.google.common.base.Strings;
 import java.io.IOException;
 import java.nio.file.Path;

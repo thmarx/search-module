@@ -1,4 +1,4 @@
-package com.github.thmarx.cms.modules.search;
+package com.condation.cms.modules.search.index;
 
 /*-
  * #%L
@@ -22,16 +22,36 @@ package com.github.thmarx.cms.modules.search;
  * #L%
  */
 
-import java.util.Collections;
+
+import java.util.ArrayList;
 import java.util.List;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
- * @author thmar
+ * @author ThorstenMarx
  */
-public record IndexDocument(String uri, String title, String content, List<String> tags) {
+public class SearchResult {
 
-	public IndexDocument(String uri, String title, String content) {
-		this(uri, title, content, Collections.emptyList());
+	@Getter
+	public final List<Item> items;
+	
+	@Getter
+	@Setter
+	public long total;
+	
+	public SearchResult () {
+		items = new ArrayList<>();
 	}
+	
+	@Data
+	public static class Item {
+		public String uri;
+		public String title;
+		public String content;
+	}
+	
 }
+

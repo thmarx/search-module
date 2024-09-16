@@ -1,4 +1,4 @@
-package com.github.thmarx.cms.modules.search.http;
+package com.condation.cms.modules.search.http;
 
 /*-
  * #%L
@@ -22,10 +22,10 @@ package com.github.thmarx.cms.modules.search.http;
  * #L%
  */
 
-import com.github.thmarx.cms.api.extensions.HttpHandler;
-import com.github.thmarx.cms.modules.search.SearchEngine;
-import com.github.thmarx.cms.modules.search.SearchRequest;
-import com.github.thmarx.cms.modules.search.index.SearchResult;
+import com.condation.cms.api.extensions.HttpHandler;
+import com.condation.cms.modules.search.SearchEngine;
+import com.condation.cms.modules.search.SearchRequest;
+import com.condation.cms.modules.search.index.SearchResult;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.nio.charset.StandardCharsets;

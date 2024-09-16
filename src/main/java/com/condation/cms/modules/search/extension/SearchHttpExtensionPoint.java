@@ -1,4 +1,4 @@
-package com.github.thmarx.cms.modules.search.index;
+package com.condation.cms.modules.search.extension;
 
 /*-
  * #%L
@@ -22,36 +22,27 @@ package com.github.thmarx.cms.modules.search.index;
  * #L%
  */
 
-
-import java.util.ArrayList;
-import java.util.List;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import com.condation.cms.api.extensions.HttpHandlerExtensionPoint;
+import com.condation.cms.api.extensions.Mapping;
+import com.condation.cms.modules.search.http.SearchHandler;
+import com.condation.modules.api.annotation.Extension;
+import org.eclipse.jetty.http.pathmap.PathSpec;
 
 /**
  *
- * @author ThorstenMarx
+ * @author t.marx
  */
-public class SearchResult {
+@Extension(HttpHandlerExtensionPoint.class)
+public class SearchHttpExtensionPoint extends HttpHandlerExtensionPoint {
 
-	@Getter
-	public final List<Item> items;
-	
-	@Getter
-	@Setter
-	public long total;
-	
-	public SearchResult () {
-		items = new ArrayList<>();
+	@Override
+	public Mapping getMapping() {
+		Mapping mapping = new Mapping();
+		
+		mapping.add(PathSpec.from("/search"), new SearchHandler(SearchLifecycleExtension.searchEngine));
+		
+		return mapping;
 	}
 	
-	@Data
-	public static class Item {
-		public String uri;
-		public String title;
-		public String content;
-	}
 	
 }
-
