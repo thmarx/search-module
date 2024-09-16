@@ -22,7 +22,7 @@ package com.condation.cms.modules.search.http;
  * #L%
  */
 
-import com.github.thmarx.cms.api.extensions.HttpHandler;
+import com.condation.cms.api.extensions.HttpHandler;
 import com.condation.cms.modules.search.SearchEngine;
 import com.condation.cms.modules.search.SearchRequest;
 import com.condation.cms.modules.search.index.SearchResult;

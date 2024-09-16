@@ -22,10 +22,10 @@ package com.condation.cms.modules.search.extension;
  * #L%
  */
 
-import com.github.thmarx.cms.api.extensions.HttpHandlerExtensionPoint;
-import com.github.thmarx.cms.api.extensions.Mapping;
+import com.condation.cms.api.extensions.HttpHandlerExtensionPoint;
+import com.condation.cms.api.extensions.Mapping;
 import com.condation.cms.modules.search.http.SearchHandler;
-import com.github.thmarx.modules.api.annotation.Extension;
+import com.condation.modules.api.annotation.Extension;
 import org.eclipse.jetty.http.pathmap.PathSpec;
 
 /**

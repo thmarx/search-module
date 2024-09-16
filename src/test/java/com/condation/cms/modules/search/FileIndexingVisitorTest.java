@@ -21,7 +21,7 @@ package com.condation.cms.modules.search;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-import com.github.thmarx.cms.api.utils.PathUtil;
+import com.condation.cms.api.utils.PathUtil;
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;

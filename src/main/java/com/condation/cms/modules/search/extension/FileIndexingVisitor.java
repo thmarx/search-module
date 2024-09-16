@@ -21,15 +21,15 @@ package com.condation.cms.modules.search.extension;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-import com.github.thmarx.cms.api.Constants;
-import com.github.thmarx.cms.api.content.ContentResponse;
-import com.github.thmarx.cms.api.feature.features.ContentRenderFeature;
-import com.github.thmarx.cms.api.feature.features.DBFeature;
-import com.github.thmarx.cms.api.feature.features.SitePropertiesFeature;
-import com.github.thmarx.cms.api.module.CMSModuleContext;
-import com.github.thmarx.cms.api.utils.HTTPUtil;
-import com.github.thmarx.cms.api.utils.PathUtil;
-import com.github.thmarx.cms.api.utils.SectionUtil;
+import com.condation.cms.api.Constants;
+import com.condation.cms.api.content.ContentResponse;
+import com.condation.cms.api.feature.features.ContentRenderFeature;
+import com.condation.cms.api.feature.features.DBFeature;
+import com.condation.cms.api.feature.features.SitePropertiesFeature;
+import com.condation.cms.api.module.CMSModuleContext;
+import com.condation.cms.api.utils.HTTPUtil;
+import com.condation.cms.api.utils.PathUtil;
+import com.condation.cms.api.utils.SectionUtil;
 import com.condation.cms.modules.search.IndexDocument;
 import com.condation.cms.modules.search.SearchEngine;
 import com.google.common.base.Strings;

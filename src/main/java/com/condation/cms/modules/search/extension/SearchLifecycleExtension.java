@@ -21,16 +21,16 @@ package com.condation.cms.modules.search.extension;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
-import com.github.thmarx.cms.api.eventbus.events.ContentChangedEvent;
-import com.github.thmarx.cms.api.eventbus.events.TemplateChangedEvent;
-import com.github.thmarx.cms.api.feature.features.DBFeature;
-import com.github.thmarx.cms.api.feature.features.EventBusFeature;
-import com.github.thmarx.cms.api.feature.features.SitePropertiesFeature;
-import com.github.thmarx.cms.api.module.CMSModuleContext;
-import com.github.thmarx.cms.api.module.CMSRequestContext;
+import com.condation.cms.api.eventbus.events.ContentChangedEvent;
+import com.condation.cms.api.eventbus.events.TemplateChangedEvent;
+import com.condation.cms.api.feature.features.DBFeature;
+import com.condation.cms.api.feature.features.EventBusFeature;
+import com.condation.cms.api.feature.features.SitePropertiesFeature;
+import com.condation.cms.api.module.CMSModuleContext;
+import com.condation.cms.api.module.CMSRequestContext;
 import com.condation.cms.modules.search.SearchEngine;
-import com.github.thmarx.modules.api.ModuleLifeCycleExtension;
-import com.github.thmarx.modules.api.annotation.Extension;
+import com.condation.modules.api.ModuleLifeCycleExtension;
+import com.condation.modules.api.annotation.Extension;
 import java.io.IOException;
 import java.nio.file.Files;
 import lombok.extern.slf4j.Slf4j;
