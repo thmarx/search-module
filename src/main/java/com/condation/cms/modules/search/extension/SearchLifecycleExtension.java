@@ -61,7 +61,11 @@ public class SearchLifecycleExtension extends ModuleLifeCycleExtension<CMSModule
 	public void activate() {
 		searchEngine = new SearchEngine();
 		try {
-			searchEngine.open(configuration.getDataDir().toPath().resolve("index"), getLanguage());
+			searchEngine.open(
+					configuration.getDataDir().toPath().resolve("index"), 
+					getLanguage(),
+					getContext()
+			);
 
 			// stat reindexing
 			Thread.ofVirtual().start(() -> {

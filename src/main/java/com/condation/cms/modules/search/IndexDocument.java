@@ -22,6 +22,7 @@ package com.condation.cms.modules.search;
  * #L%
  */
 
+import com.condation.cms.api.db.ContentNode;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,9 +30,9 @@ import java.util.List;
  *
  * @author thmar
  */
-public record IndexDocument(String uri, String title, String content, List<String> tags) {
+public record IndexDocument(String uri, String title, String content, List<String> tags, ContentNode node) {
 
-	public IndexDocument(String uri, String title, String content) {
-		this(uri, title, content, Collections.emptyList());
+	public IndexDocument(String uri, String title, String content, ContentNode node) {
+		this(uri, title, content, Collections.emptyList(), node);
 	}
 }

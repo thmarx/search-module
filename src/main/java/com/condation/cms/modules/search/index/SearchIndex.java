@@ -21,14 +21,22 @@ package com.condation.cms.modules.search.index;
  * <http://www.gnu.org/licenses/gpl-3.0.html>.
  * #L%
  */
+import com.condation.cms.api.db.ContentNode;
+import com.condation.cms.api.feature.features.DBFeature;
+import com.condation.cms.api.module.CMSModuleContext;
+import com.condation.cms.modules.search.ArrayUtil;
 import com.condation.cms.modules.search.FileUtils;
 import com.condation.cms.modules.search.IndexDocument;
 import com.condation.cms.modules.search.SearchField;
 import com.condation.cms.modules.search.SearchRequest;
 import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -76,6 +84,7 @@ import org.apache.lucene.analysis.tr.TurkishAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.FieldType;
+import org.apache.lucene.document.KnnFloatVectorField;
 import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.facet.FacetsConfig;
@@ -100,7 +109,6 @@ import org.apache.lucene.search.highlight.InvalidTokenOffsetsException;
 import org.apache.lucene.search.highlight.QueryScorer;
 import org.apache.lucene.search.highlight.SimpleHTMLFormatter;
 import org.apache.lucene.search.highlight.SimpleSpanFragmenter;
-import org.apache.lucene.search.highlight.TextFragment;
 import org.apache.lucene.search.highlight.TokenSources;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
@@ -116,6 +124,8 @@ public class SearchIndex {
 
 	private final Path path;
 	private final String language;
+
+	private final CMSModuleContext moduleContext;
 
 	private Directory directory;
 	private IndexWriter writer = null;
@@ -268,6 +278,40 @@ public class SearchIndex {
 		}
 	}
 
+	private void addVectors(Document document, ContentNode contentNode) {
+		var db = moduleContext.get(DBFeature.class).db();
+
+		db.getTaxonomies().all().forEach(taxonomy -> {
+			var taxonomyVector = new ArrayList<Float>();
+			taxonomy.values.values().forEach(taxValue -> {
+				if (contentNode.hasMetaValue(taxonomy.field)) {
+					if (taxonomy.isArray()) {
+						List<String> nodeValues = (List<String>) contentNode.getMetaValue(taxonomy.field, List.class).get();
+						taxonomyVector.add(
+								nodeValues.contains(taxValue.id)
+								? 1.0f
+								: 0.0f
+						);
+					} else {
+						var nodeValue = contentNode.getMetaValue(taxonomy.field, String.class).get();
+						taxonomyVector.add(
+								taxValue.id.equals(nodeValue)
+								? 1.0f
+								: 0.0f
+						);
+					}
+				} else {
+					taxonomyVector.add(0.0f);
+				}
+			});
+
+			document.add(new KnnFloatVectorField(
+					"%s_vector".formatted(taxonomy.slug),
+					ArrayUtil.toPrimitive(taxonomyVector.toArray(new Float[taxonomyVector.size()]))
+			));
+		});
+	}
+
 	public void delete(final String uri) throws IOException {
 		writer.deleteDocuments(new Term("uri", uri));
 	}
@@ -331,11 +375,10 @@ public class SearchIndex {
 				var item = new SearchResult.Item();
 				item.setUri(doc.get("uri"));
 				item.setTitle(doc.get("title"));
-				
+
 				final String content = doc.get("content");
 				TokenStream tokenStream = TokenSources.getAnyTokenStream(searcher.getIndexReader(), sdoc.doc, "content", analyzer);
 				item.setContent(highlighter.getBestFragment(tokenStream, content));
-				
 
 				result.getItems().add(item);
 			}

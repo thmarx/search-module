@@ -106,7 +106,7 @@ public class FileIndexingVisitor extends SimpleFileVisitor<Path> {
 					title = titleElements.text();
 				}
 				
-				IndexDocument document = new IndexDocument(uri, title, text);
+				IndexDocument document = new IndexDocument(uri, title, text, content.get().node());
 				searchEngine.index(document);
 			}
 

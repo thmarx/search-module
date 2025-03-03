@@ -22,13 +22,12 @@ package com.condation.cms.modules.search;
  * #L%
  */
 
+import com.condation.cms.api.module.CMSModuleContext;
 import com.condation.cms.modules.search.index.SearchIndex;
 import com.condation.cms.modules.search.index.SearchResult;
 import com.google.common.base.Strings;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -40,9 +39,9 @@ public class SearchEngine implements AutoCloseable{
 
 	private SearchIndex searchIndex;
 	
-	public void open (Path path, String language) throws IOException {
+	public void open (Path path, String language, CMSModuleContext moduleContext) throws IOException {
 		
-		searchIndex = new SearchIndex(path, language);
+		searchIndex = new SearchIndex(path, language, moduleContext);
 		searchIndex.open();
 	}
 	
